@@ -1,0 +1,91 @@
+<LineRectangle>:
+    canvas:
+        Color:
+            rgba: .1, .1, 1, .9
+        Line:
+            width: 2.
+            rectangle: (self.x, self.y, self.width, self.height)
+<Button>:
+    font_size: 18
+
+<Label>:
+    font_size:18
+    size_hint: 0.2, 0.07
+<TextInput>:
+    font_size:18
+    size_hint: 0.2, 0.05
+
+
+<FloatLayout>
+    altitude: altitude
+    folder: folder
+    threshold: threshold
+    current: current
+    imprint: imprint
+    Widget:
+
+        id: imprint
+        pos_hint: {"center_y": 0.5, "center_x": 0.5}
+        size_hint: 0.7, 0.7
+        canvas:
+            Rectangle:
+                source: app.abcd
+                size: self.size
+                pos: self.pos
+
+
+
+    Widget:
+        pos_hint: {"right": 0.15, "top":1}
+        size_hint: 0.15,0.2
+        canvas:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'uhseal.png'
+
+    Button:
+        text: "Select Directory"
+        pos_hint: {"x": 0.5, 'y': 0}
+        on_release: root.selectDirectory()
+
+    Button:
+        text: "Predict"
+        pos_hint: {"right": 0.5, 'bottom': 1}
+        on_release: root.Predict()
+    Label:
+        text: "Choose a folder"
+        pos_hint: {"right": 0.642, "top":1.01}
+
+    TextInput:
+        text: "Folder Path"
+        pos_hint: {"right": 0.8, "top":1}
+        id: folder
+
+    Label:
+        text: "Altitude(feet)"
+        pos_hint: {"right": 0.65, "top": 0.96}
+
+    TextInput:
+        text: ""
+        pos_hint: {"right": 0.8, "top":0.95}
+        id: altitude
+    Label:
+        text: "Prediction Threshold (0.0-1.0)"
+        pos_hint: {"right": 0.592, "top": 0.91}
+
+    TextInput:
+        text: ""
+        pos_hint: {"right": 0.8, "top":0.9}
+        id: threshold
+
+    Button:
+        text: "Next"
+        pos_hint: {"right": 1, "bottom": 1}
+        on_release: root.next()
+        id:current
+    Button:
+        text: "Previous"
+        pos_hint: {"right": .2, "bottom": 1}
+        on_release: root.prev()
+        id: current
